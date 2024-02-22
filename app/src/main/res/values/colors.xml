@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="primary_color">#222433</color>
+    <color name="secondary_color">#FCFCFC</color>
+    <color name="search_color">#4F5270</color>
+    <color name="matt_black">#313131</color>
+    // Color Pallet
+    <color name="cyan_note">#A5E9FE</color>
+    <color name="green_note">#CDFFA6</color>
+    <color name="pink_note">#F49DE1</color>
+    <color name="yellow_note">#F3E09E</color>
+    <color name="orange_note">#FFA6A6</color>
+</resources>
