@@ -10,12 +10,14 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import com.google.android.material.search.SearchBar
+import com.note.modern.mvvm.R
 import com.note.modern.mvvm.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
-
+    private lateinit var menuProvider: MenuProvider
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,9 +33,24 @@ class HomeFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.title = "Notes"
 
         val menuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider{
+        menuProvider = object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                if(menu.findItem(R.id.))
+
+                if(menu.findItem(R.id.search_notes) == null){
+                    menuInflater.inflate(R.menu.toolbar_menu, menu)
+                    var menuItem = menu.findItem(R.id.search_notes)
+                    var searchBar = menuItem.actionView as SearchBar;
+                    menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+                        override fun onMenuItemActionExpand(item: MenuItem): Boolean {
+                            TODO("Not yet implemented")
+                        }
+
+                        override fun onMenuItemActionCollapse(item: MenuItem): Boolean {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
+                }
 
             }
 
@@ -41,7 +58,8 @@ class HomeFragment : Fragment() {
                 TODO("Not yet implemented")
             }
 
-        })
+        }
+        menuHost.addMenuProvider(menuProvider)
 
     }
 
