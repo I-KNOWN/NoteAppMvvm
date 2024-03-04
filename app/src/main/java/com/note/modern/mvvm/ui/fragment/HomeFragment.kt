@@ -8,9 +8,10 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
-import com.google.android.material.search.SearchBar
 import com.note.modern.mvvm.R
 import com.note.modern.mvvm.databinding.FragmentHomeBinding
 
@@ -35,12 +36,17 @@ class HomeFragment : Fragment() {
         val menuHost = requireActivity()
         menuProvider = object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.toolbar_menu, menu)
 
                 if(menu.findItem(R.id.search_notes) == null){
-                    menuInflater.inflate(R.menu.toolbar_menu, menu)
                     var menuItem = menu.findItem(R.id.search_notes)
-                    var searchBar = menuItem.actionView as SearchBar;
-                    menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
+                    var searchView = menuItem.actionView as SearchView
+
+//                    menuItem.icon = ContextCompat.getDrawable(requireContext(), R.drawable.app_logo)
+
+
+//                    menuItem.icon = ContextCompat.getDrawable(requireActivity(), R.drawable.search_ic)
+/*                    menuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener{
                         override fun onMenuItemActionExpand(item: MenuItem): Boolean {
                             TODO("Not yet implemented")
                         }
@@ -49,19 +55,24 @@ class HomeFragment : Fragment() {
                             TODO("Not yet implemented")
                         }
 
-                    })
+                    })*/
                 }
 
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                TODO("Not yet implemented")
+                /*when(menuItem.itemId){
+                    R.id.search_notes->
+                }*/
+                return false
             }
 
         }
-        menuHost.addMenuProvider(menuProvider)
+        menuHost.addMenuProvider(menuProvider, viewLifecycleOwner)
 
     }
+
+
 
 
 }

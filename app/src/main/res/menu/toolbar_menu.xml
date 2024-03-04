@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/search_notes"
         android:title="search"
-        android:icon="@drawable/search_ic"
-        app:showAsAction="always"
-        app:actionViewClass="com.google.android.material.search.SearchBar" >
+        android:icon="@drawable/search_icon_wrapper"
+        
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView" >
     </item>
 </menu>
